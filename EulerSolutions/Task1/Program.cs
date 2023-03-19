@@ -57,5 +57,4 @@ internal class MultiplesResultModel
 {
     public int Divider { get; set; }
     public List<int> Multiples { get; set; }
-
 }
