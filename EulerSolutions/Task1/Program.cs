@@ -2,35 +2,60 @@
 {
     private static void Main(string[] args)
     {
-        var nums = Enumerable.Range(1, 9);
+        var nums = Enumerable.Range(1, 999);
 
-        var dividers = new List<int>() { 3, 5, 2};
+        var dividers = new List<int>() { 3, 5 };
 
-        nums = GetAllMultiplesOf(dividers, nums);
+        var models = GetAllMultiplesOf(dividers, nums);
 
-        foreach (var i in nums)
+        foreach (var i in models)
         {
-            Console.Write($"{i}; ");
+            var str = WriteMultiples(i.Multiples);
+            Console.WriteLine($"Divider: {i.Divider}, Multiples: {str}");
         }
-
-        Console.WriteLine();
-        Console.WriteLine($"Sum of the multiples: {nums.Sum()}");
-    }
-
-    private static IEnumerable<int> GetAllMultiplesOf(IEnumerable<int> dividers, IEnumerable<int> arr)
-    {
-        var lists = new List<List<int>>();
-
-        foreach (var d in dividers) 
-            lists.Add(arr.Where(x => x % d == 0).ToList());
 
         IEnumerable<int> result = new List<int>();
 
-        for (var i = 0; i < lists.Count; i++)
+        for (var i = 0; i < models.Count; i++)
         {
-            result = result.Union(lists[i]);
+            result = result.Union(models[i].Multiples);
         }
 
-        return result;
+        Console.WriteLine();
+        Console.WriteLine($"Sum of the multiples: {result.Sum()}");
     }
+
+    private static string WriteMultiples(List<int> nums)
+    {
+        var str = string.Empty;
+        foreach (var i in nums)
+            str += $"{i}; ";
+
+        return str;
+    }
+
+    private static List<MultiplesResultModel> GetAllMultiplesOf(IEnumerable<int> dividers, IEnumerable<int> arr)
+    {
+        var lists = new List<List<int>>();
+        var models = new List<MultiplesResultModel>();
+
+        foreach (var d in dividers)
+        {
+            var model = new MultiplesResultModel();
+
+            model.Multiples = arr.Where(x => x % d == 0).ToList();
+            model.Divider = d;
+
+            models.Add(model);
+        }
+
+        return models;
+    }
+}
+
+internal class MultiplesResultModel
+{
+    public int Divider { get; set; }
+    public List<int> Multiples { get; set; }
+
 }
