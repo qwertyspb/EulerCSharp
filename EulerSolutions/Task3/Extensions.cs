@@ -2,8 +2,14 @@
 {
     public static class Extensions
     {
-        public static bool IsPrimeLong(this long num)
+        public static bool IsPrime(this long num)
         {
+            if (num == 1)
+                return false;
+
+            if (num == 2)
+                return true;
+
             for (long i = 2; i < num; i++)
             {
                 if (num % i == 0)
@@ -15,7 +21,10 @@
 
         public static bool IsPrime(this int num)
         {
-            if (num == 1 || num == 2)
+            if (num == 1)
+                return false;
+
+            if (num == 2)
                 return true;
 
             for (int i = 2; i < num; i++)

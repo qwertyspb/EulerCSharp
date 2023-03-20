@@ -26,7 +26,7 @@ internal class Program
                 Console.WriteLine(bilCounbter);
             }
 
-            if (num % i == 0 && i.IsPrimeLong())
+            if (num % i == 0 && i.IsPrime())
                 return i;
         }
 

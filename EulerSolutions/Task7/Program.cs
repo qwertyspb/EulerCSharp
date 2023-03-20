@@ -11,7 +11,7 @@ internal class Program
 
         while (counter <= Limit)
         {
-            if (i.IsPrime())
+            if (i.IsPrime() || i == 1)
             {
                 counter++;
                 result = i;
