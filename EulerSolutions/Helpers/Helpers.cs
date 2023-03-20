@@ -1,8 +1,25 @@
-﻿namespace Task3
+﻿namespace HelpingLibrary
 {
-    public static class Extensions
+    public class Helpers
     {
-        public static bool IsPrime(this long num)
+        public static long MultiplyInCycle(int i, List<int> list, int adjacent)
+        {
+            var counter = 0;
+            long product = 1;
+
+            while (counter < adjacent)
+            {
+                counter++;
+
+                product *= list[i];
+
+                i++;
+            }
+
+            return product;
+        }
+
+        public static bool IsPrime(long num)
         {
             if (num == 1)
                 return false;
@@ -19,7 +36,7 @@
             return true;
         }
 
-        public static bool IsPrime(this int num)
+        public static bool IsPrime(int num)
         {
             if (num == 1)
                 return false;

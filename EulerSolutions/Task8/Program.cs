@@ -1,4 +1,6 @@
-﻿internal class Program
+﻿using HelpingLibrary;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
@@ -18,11 +20,11 @@
         {
 
             if (i == 0)
-                initialProduct = Multiply(i, list, AdjacentDigits);
+                initialProduct = Helpers.MultiplyInCycle(i, list, AdjacentDigits);
 
             else
             {
-                var product = Multiply(i, list, AdjacentDigits);
+                var product = Helpers.MultiplyInCycle(i, list, AdjacentDigits);
 
                 if (product > initialProduct)
                 {
@@ -38,20 +40,5 @@
         Console.WriteLine(result);
     }
 
-    private static long Multiply(int i, List<int> list, int adjacent)
-    {
-        var counter = 0;
-        long product = 1;
-
-        while (counter < adjacent)
-        {
-            counter++;
-
-            product *= list[i];
-
-            i++;
-        }
-
-        return product;
-    }
+    
 }

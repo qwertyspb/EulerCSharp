@@ -1,4 +1,4 @@
-﻿using Task3;
+﻿using HelpingLibrary;
 
 internal class Program
 {
@@ -26,7 +26,7 @@ internal class Program
                 Console.WriteLine(bilCounbter);
             }
 
-            if (num % i == 0 && i.IsPrime())
+            if (num % i == 0 && Helpers.IsPrime(i))
                 return i;
         }
 

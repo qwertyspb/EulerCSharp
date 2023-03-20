@@ -1,4 +1,4 @@
-﻿using Task3;
+﻿using HelpingLibrary;
 
 internal class Program
 {
@@ -11,7 +11,7 @@ internal class Program
 
         while (counter <= Limit)
         {
-            if (i.IsPrime() || i == 1)
+            if (Helpers.IsPrime(i) || i == 1)
             {
                 counter++;
                 result = i;

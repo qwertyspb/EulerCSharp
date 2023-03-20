@@ -1,4 +1,4 @@
-﻿using Task3;
+﻿using HelpingLibrary;
 
 internal class Program
 {
@@ -14,7 +14,7 @@ internal class Program
         {
             counter++;
 
-            if (i.IsPrime())
+            if (Helpers.IsPrime(i))
                 result += i;
 
             if (counter % 1000 == 0)
