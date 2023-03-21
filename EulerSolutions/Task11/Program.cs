@@ -1,9 +1,11 @@
 ﻿using Enums;
 using HelpingLibrary;
+using System.Linq;
 
 internal class Program
 {
     const int AdjacentDigits = 4;
+    const int Divider = 20;
     
     private static void Main(string[] args)
     {
@@ -29,27 +31,26 @@ internal class Program
 
         var products = new List<long>
         {
-            HorizontalMultiply(MultiplySide.Right, numbers).Max(),
-            HorizontalMultiply(MultiplySide.Left, numbers).Max(),
-            DownMultiply(numbers),
-            UpMultiply(numbers)
+            GetLargestProductInLine(numbers).Max(),
+            GetLargestProductInColumn(numbers).Max()
         };
     }
 
-    private static List<long> HorizontalMultiply(MultiplySide side, List<int> numbers)
+    private static List<long> GetLargestProductInColumn(List<int> numbers)
     {
         long initialProduct = 1;
         long largestInLine = 0;
+        var initial = 0;
         var result = new List<long>();
 
-        for (int i = 0; i < numbers.Count - (AdjacentDigits - 1); i++)
+        for (int i = 0; i < numbers.Count; i = i)
         {
-            if (i == 0 || i % 20 == 0)
-                initialProduct = Helpers.GetProductWithSide(i, numbers, AdjacentDigits, side); 
+            if (i >= 0 && i < Divider)
+                initialProduct = Helpers.MultiplyInCycle(i, numbers, AdjacentDigits, MultiplyDirection.Column, Divider);
 
             else
             {
-                var product = Helpers.GetProductWithSide(i, numbers, AdjacentDigits, side);
+                var product = Helpers.MultiplyInCycle(i, numbers, AdjacentDigits, MultiplyDirection.Column, Divider);
 
                 if (product > initialProduct)
                 {
@@ -61,7 +62,49 @@ internal class Program
                     largestInLine = initialProduct;
             }
 
-            if ((i + AdjacentDigits) % 20 == 0)
+            if (numbers.Count - i == AdjacentDigits * Divider - Divider + 1)
+                break;
+
+            else if (numbers.Count - i <= AdjacentDigits * Divider)
+            {
+                initial++;
+                i = initial;
+                result.Add(largestInLine);
+            }
+
+            else
+                i += Divider;
+        }
+
+        return result;
+    }
+
+    private static List<long> GetLargestProductInLine(List<int> numbers)
+    {
+        long initialProduct = 1;
+        long largestInLine = 0;
+        var result = new List<long>();
+
+        for (int i = 0; i < numbers.Count - (AdjacentDigits - 1); i++)
+        {
+            if (i == 0 || i % Divider == 0)
+                initialProduct = Helpers.MultiplyInCycle(i, numbers, AdjacentDigits, MultiplyDirection.Row); 
+
+            else
+            {
+                var product = Helpers.MultiplyInCycle(i, numbers, AdjacentDigits, MultiplyDirection.Row);
+
+                if (product > initialProduct)
+                {
+                    largestInLine = product;
+                    initialProduct = product;
+                }
+
+                else
+                    largestInLine = initialProduct;
+            }
+
+            if ((i + AdjacentDigits) % Divider == 0)
             {
                 i += AdjacentDigits - 1;
                 result.Add(largestInLine);
@@ -69,15 +112,5 @@ internal class Program
         }
 
         return result;
-    }
-
-    private static long DownMultiply(List<int> numbers)
-    {
-        throw new NotImplementedException();
-    }
-
-    private static long UpMultiply(List<int> numbers)
-    {
-        throw new NotImplementedException();
     }
 }

@@ -4,7 +4,7 @@ namespace HelpingLibrary
 {
     public class Helpers
     {
-        public static long MultiplyInCycle(int i, List<int> list, int adjacent, MultiplySide side)
+        public static long MultiplyInCycle(int i, List<int> list, int adjacent, MultiplyDirection side, int divider = 0)
         {
             var counter = 0;
             long product = 1;
@@ -17,8 +17,8 @@ namespace HelpingLibrary
 
                 i = side switch
                 {
-                    MultiplySide.Right => i + 1,
-                    MultiplySide.Left => i - 1,
+                    MultiplyDirection.Row => i + 1,
+                    MultiplyDirection.Column => i + divider,
                     _ => throw new NotImplementedException()
                 };
             }
@@ -58,16 +58,6 @@ namespace HelpingLibrary
             }
 
             return true;
-        }
-
-        public static long GetProductWithSide(int i, List<int> numbers, int adjacentDigits, MultiplySide side)
-        {
-            return side switch
-            {
-                MultiplySide.Right => MultiplyInCycle(i, numbers, adjacentDigits, side),
-                MultiplySide.Left => MultiplyInCycle(i + (adjacentDigits - 1), numbers, adjacentDigits, side),
-                _ => throw new NotImplementedException()
-            };
         }
     }
 }
