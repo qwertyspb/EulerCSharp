@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enums", "Enums\Enums.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task12", "Task12\Task12.csproj", "{85641E36-ED3A-4266-BD47-65068E4B8A4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task13", "Task13\Task13.csproj", "{C7443483-CF18-4846-8B0D-FB90F377A3F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{85641E36-ED3A-4266-BD47-65068E4B8A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85641E36-ED3A-4266-BD47-65068E4B8A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85641E36-ED3A-4266-BD47-65068E4B8A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7443483-CF18-4846-8B0D-FB90F377A3F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7443483-CF18-4846-8B0D-FB90F377A3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7443483-CF18-4846-8B0D-FB90F377A3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7443483-CF18-4846-8B0D-FB90F377A3F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
