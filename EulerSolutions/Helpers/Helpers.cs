@@ -1,8 +1,10 @@
-﻿namespace HelpingLibrary
+﻿using Enums;
+
+namespace HelpingLibrary
 {
     public class Helpers
     {
-        public static long MultiplyInCycle(int i, List<int> list, int adjacent)
+        public static long MultiplyInCycle(int i, List<int> list, int adjacent, MultiplySide side)
         {
             var counter = 0;
             long product = 1;
@@ -13,7 +15,12 @@
 
                 product *= list[i];
 
-                i++;
+                i = side switch
+                {
+                    MultiplySide.Right => i + 1,
+                    MultiplySide.Left => i - 1,
+                    _ => throw new NotImplementedException()
+                };
             }
 
             return product;
@@ -51,6 +58,16 @@
             }
 
             return true;
+        }
+
+        public static long GetProductWithSide(int i, List<int> numbers, int adjacentDigits, MultiplySide side)
+        {
+            return side switch
+            {
+                MultiplySide.Right => MultiplyInCycle(i, numbers, adjacentDigits, side),
+                MultiplySide.Left => MultiplyInCycle(i + (adjacentDigits - 1), numbers, adjacentDigits, side),
+                _ => throw new NotImplementedException()
+            };
         }
     }
 }

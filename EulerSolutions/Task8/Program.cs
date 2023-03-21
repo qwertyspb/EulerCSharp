@@ -20,11 +20,11 @@ internal class Program
         {
 
             if (i == 0)
-                initialProduct = Helpers.MultiplyInCycle(i, list, AdjacentDigits);
+                initialProduct = Helpers.MultiplyInCycle(i, list, AdjacentDigits, Enums.MultiplySide.Right);
 
             else
             {
-                var product = Helpers.MultiplyInCycle(i, list, AdjacentDigits);
+                var product = Helpers.MultiplyInCycle(i, list, AdjacentDigits, Enums.MultiplySide.Right);
 
                 if (product > initialProduct)
                 {

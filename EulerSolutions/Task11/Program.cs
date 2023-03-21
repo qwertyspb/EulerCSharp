@@ -1,4 +1,5 @@
-﻿using HelpingLibrary;
+﻿using Enums;
+using HelpingLibrary;
 
 internal class Program
 {
@@ -26,13 +27,16 @@ internal class Program
             }
         }
 
-        var right = RightMultiply(numbers);
-        var left = LeftMultiply();
-        var down = DownMultiply();
-        var up = UpMultiply();
+        var products = new List<long>
+        {
+            HorizontalMultiply(MultiplySide.Right, numbers).Max(),
+            HorizontalMultiply(MultiplySide.Left, numbers).Max(),
+            DownMultiply(numbers),
+            UpMultiply(numbers)
+        };
     }
 
-    private static object RightMultiply(List<int> numbers)
+    private static List<long> HorizontalMultiply(MultiplySide side, List<int> numbers)
     {
         long initialProduct = 1;
         long largestInLine = 0;
@@ -41,11 +45,11 @@ internal class Program
         for (int i = 0; i < numbers.Count - (AdjacentDigits - 1); i++)
         {
             if (i == 0 || i % 20 == 0)
-                initialProduct = Helpers.MultiplyInCycle(i, numbers, AdjacentDigits);
+                initialProduct = Helpers.GetProductWithSide(i, numbers, AdjacentDigits, side); 
 
             else
             {
-                var product = Helpers.MultiplyInCycle(i, numbers, AdjacentDigits);
+                var product = Helpers.GetProductWithSide(i, numbers, AdjacentDigits, side);
 
                 if (product > initialProduct)
                 {
@@ -64,20 +68,15 @@ internal class Program
             }
         }
 
-        return result.Max();
+        return result;
     }
 
-    private static object LeftMultiply()
+    private static long DownMultiply(List<int> numbers)
     {
         throw new NotImplementedException();
     }
 
-    private static object DownMultiply()
-    {
-        throw new NotImplementedException();
-    }
-
-    private static object UpMultiply()
+    private static long UpMultiply(List<int> numbers)
     {
         throw new NotImplementedException();
     }
