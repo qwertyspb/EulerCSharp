@@ -3,7 +3,7 @@
     public class NumberInterpretator
     {
         /// <summary>
-        /// Returns the letter version of the number 
+        /// Provide the letter version of the number which is less than 10000
         /// </summary>
         /// <param name="number">Number that is needed to be parsed in word variant</param>
         /// <returns>Returns the letter version of the number</returns>
@@ -27,10 +27,20 @@
                     return GetTwoDigitNumber(unit, firstDigit);
 
                 case 3:
-                default:
                     return GetThreeDigitNumber(parsed, firstDigit);
 
+                case 4:
+                    return GetFourDigitNumber(parsed, firstDigit);
+
+                default:
+                    return "This number is too big for this method";
+
             };
+        }
+
+        private static string GetFourDigitNumber(List<int> parsed, int thousand)
+        {
+            return $"{DigitNames.Units[thousand]} thousand {GetThreeDigitNumber(parsed, parsed[^3])}";
         }
 
         private static string GetThreeDigitNumber(List<int> parsed, int hundred)
