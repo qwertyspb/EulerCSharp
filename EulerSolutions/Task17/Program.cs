@@ -6,7 +6,7 @@ internal class Program
     {
         var arr = Enumerable.Range(1, 1000).ToList();
 
-        var i = 9009;
+        var i = 12;
         Console.WriteLine(NumberInterpretator.GetWordInterpretation(i));
 
         //var sb = new StringBuilder();
