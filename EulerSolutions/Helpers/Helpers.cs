@@ -59,5 +59,12 @@ namespace HelpingLibrary
 
             return true;
         }
+
+        public static List<int> GetListOfNumbers(int i)
+        {
+            var arr = i.ToString().ToCharArray();
+
+            return arr.Select(x => int.Parse(x.ToString())).ToList();
+        }
     }
 }
