@@ -15,27 +15,35 @@
             var firstDigit = parsed.First();
             var unit = parsed.Last();
 
+            string result;
+
             switch (length)
             {
                 case 1 when firstDigit == 0:
-                    return DigitNames.Units[firstDigit];
+                    result = DigitNames.Units[firstDigit];
+                    break;
 
                 case 1:
-                    return GetUnit(unit);
+                    result = GetUnit(unit);
+                    break;
 
                 case 2:
-                    return GetTwoDigitNumber(unit, firstDigit);
+                    result = GetTwoDigitNumber(unit, firstDigit);
+                    break;
 
                 case 3:
-                    return GetThreeDigitNumber(parsed, firstDigit);
+                    result = GetThreeDigitNumber(parsed, firstDigit);
+                    break;
 
                 case 4:
-                    return GetFourDigitNumber(parsed, firstDigit);
+                    result = GetFourDigitNumber(parsed, firstDigit);
+                    break;
 
                 default:
                     return "This number is too big for this method";
-
             };
+
+            return result.Replace("  ", " ");
         }
 
         private static string GetFourDigitNumber(List<int> parsed, int thousand)
