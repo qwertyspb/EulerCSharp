@@ -1,8 +1,9 @@
 ﻿using Enums;
+using HelpingLibrary.Interpretator;
 
 namespace HelpingLibrary
 {
-    public class Helpers
+    public static class Helpers
     {
         public static long MultiplyInCycle(int i, List<int> list, int adjacent, MultiplyDirection side, int divider = 0)
         {

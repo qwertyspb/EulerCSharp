@@ -1,11 +1,14 @@
 ﻿using HelpingLibrary;
+using HelpingLibrary.Interpretator;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        var i = 123;
+        var i = 135;
 
-        var parsed = Helpers.GetListOfNumbers(i);
+        string wordInterpretation = NumberInterpretator.GetWordInterpretation(i);
+
+        Console.WriteLine(wordInterpretation);
     }
 }
