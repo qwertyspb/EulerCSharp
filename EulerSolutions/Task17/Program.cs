@@ -4,10 +4,21 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        var i = 9999;
+        var arr = Enumerable.Range(1, 1000).ToList();
 
-        string wordInterpretation = NumberInterpretator.GetWordInterpretation(i);
+        var i = 9009;
+        Console.WriteLine(NumberInterpretator.GetWordInterpretation(i));
 
-        Console.WriteLine(wordInterpretation);
+        //var sb = new StringBuilder();
+
+        //arr.ForEach(x =>
+        //{
+        //    var wordInterpretation = NumberInterpretator.GetWordInterpretation(x);
+        //    sb.Append(wordInterpretation);
+        //});
+
+        //sb.Replace(" ", string.Empty);
+
+        //Console.WriteLine(sb.ToString().Length);
     }
 }

@@ -45,7 +45,21 @@
 
         private static string GetThreeDigitNumber(List<int> parsed, int hundred)
         {
-            return $"{DigitNames.Units[hundred]} hundred {GetTwoDigitNumber(parsed.Last(), parsed[^2])}";
+            var hundredName = DigitNames.Units[hundred];
+            var unit = parsed.Last();
+            var dozen = parsed[^2];
+
+            var hundredString = hundred == 0 
+                ? string.Empty
+                : $"{hundredName} hundred";
+
+            if (unit == 0 && dozen == 0)
+                return hundredString;
+
+            if (dozen == 0)
+                return $"{hundredString} {GetUnit(unit)}";
+
+            return $"{hundredString} {GetTwoDigitNumber(unit, dozen)}";
         }
 
         private static string GetTwoDigitNumber(int unit, int dozen)
