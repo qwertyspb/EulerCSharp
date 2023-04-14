@@ -22,6 +22,7 @@
             { 1, "eleven" },
             { 2, "twelve" },
             { 3, "thirteen" },
+            { 5, "fifteen" },
             { 8, "eighteen" }
         };
 
@@ -29,6 +30,8 @@
         {
             { 2, "twenty" },
             { 3, "thirty" },
+            { 4, "forty" },
+            { 5, "fifty" },
             { 8, "eighty" }
         };
     }

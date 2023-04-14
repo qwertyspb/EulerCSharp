@@ -1,4 +1,5 @@
 ﻿using HelpingLibrary.Interpretator;
+using System.Text;
 
 internal class Program
 {
@@ -6,19 +7,18 @@ internal class Program
     {
         var arr = Enumerable.Range(1, 1000).ToList();
 
-        var i = 12;
-        Console.WriteLine(NumberInterpretator.GetWordInterpretation(i));
+        //arr.ForEach(x => Console.WriteLine(NumberInterpretator.GetWordInterpretation(x)));
 
-        //var sb = new StringBuilder();
+        var sb = new StringBuilder();
 
-        //arr.ForEach(x =>
-        //{
-        //    var wordInterpretation = NumberInterpretator.GetWordInterpretation(x);
-        //    sb.Append(wordInterpretation);
-        //});
+        arr.ForEach(x =>
+        {
+            var wordInterpretation = NumberInterpretator.GetWordInterpretation(x);
+            sb.Append(wordInterpretation);
+        });
 
-        //sb.Replace(" ", string.Empty);
+        sb.Replace(" ", string.Empty);
 
-        //Console.WriteLine(sb.ToString().Length);
+        Console.WriteLine(sb.ToString().Length);
     }
 }

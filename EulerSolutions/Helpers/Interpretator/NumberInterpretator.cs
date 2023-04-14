@@ -65,9 +65,9 @@
                 return hundredString;
 
             if (dozen == 0)
-                return $"{hundredString} {GetUnit(unit)}";
+                return $"{hundredString} and {GetUnit(unit)}";
 
-            return $"{hundredString} {GetTwoDigitNumber(unit, dozen)}";
+            return $"{hundredString} and {GetTwoDigitNumber(unit, dozen)}";
         }
 
         private static string GetTwoDigitNumber(int unit, int dozen)
@@ -76,7 +76,7 @@
 
             if (dozen == 1)
             {
-                if (unit <= 3 || unit == 8)
+                if (unit is <= 3 or 5 or 8)
                     return DigitNames.FirstDozen[unit];
 
                 return $"{unitName}teen";
@@ -84,7 +84,7 @@
 
             var dozenName = dozen switch
             {
-                2 or 3 or 8 => DigitNames.Dozens[dozen],
+                <= 5 or 8 => DigitNames.Dozens[dozen],
                 _ => $"{DigitNames.Units[dozen]}ty"
             };
 
