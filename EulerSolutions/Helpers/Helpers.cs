@@ -67,5 +67,13 @@ namespace HelpingLibrary
 
             return arr.Select(x => int.Parse(x.ToString())).ToList();
         }
+
+        public static List<int> GetListOfNumbers(double i)
+        {
+            var arr = i.ToString().ToCharArray();
+
+            return arr.Select(x => int.Parse(x.ToString())).ToList();
+        }
+
     }
 }
