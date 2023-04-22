@@ -6,7 +6,7 @@ internal class Program
     {
         var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
-        var income = File.ReadAllText(@"C:\Users\alexa\PracticeCSharp\EulerCSharp_repo\EulerSolutions\Task22\p022_names.txt");
+        var income = File.ReadAllText(@"..\..\..\p022_names.txt");
 
         var names = income
             .Split(',')
