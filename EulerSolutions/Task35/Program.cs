@@ -6,7 +6,7 @@ internal class Program
     {
         var circularPrimes = new List<int>();
 
-        for (int num = 2; num < 198; num++)
+        for (int num = 2; num < 1000000; num++)
         {
             var digits = Helpers.GetListOfDigits(num);
 
@@ -23,7 +23,7 @@ internal class Program
 
         circularPrimes = circularPrimes.Distinct().ToList();
 
-        circularPrimes.ForEach(x => Console.WriteLine(x));
+        Console.Write(circularPrimes.Count);
     }
 
     private static List<int> GetRotatedNumbers(int num)
