@@ -61,19 +61,38 @@ namespace HelpingLibrary
             return true;
         }
 
-        public static List<int> GetListOfNumbers(int i)
+        /// <summary>
+        /// Rerurns int as a list of digits
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public static List<int> GetListOfDigits(int i)
         {
             var arr = i.ToString().ToCharArray();
 
             return arr.Select(x => int.Parse(x.ToString())).ToList();
         }
 
-        public static List<int> GetListOfNumbers(double i)
+        /// <summary>
+        /// Rerurns double as a list of digits
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public static List<int> GetListOfDigits(double i)
         {
             var arr = i.ToString().ToCharArray();
 
             return arr.Select(x => int.Parse(x.ToString())).ToList();
         }
 
+        public static double GetFactorial(int d)
+        {
+            var result = 1d;
+
+            for (int i = 1; i <= d; i++)
+                result *= i;
+
+            return result;
+        }
     }
 }

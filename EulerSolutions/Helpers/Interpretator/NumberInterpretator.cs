@@ -9,7 +9,7 @@
         /// <returns>Returns the letter version of the number</returns>
         public static string GetWordInterpretation(int number)
         {
-            var parsed = Helpers.GetListOfNumbers(number);
+            var parsed = Helpers.GetListOfDigits(number);
 
             var length = parsed.Count;
             var firstDigit = parsed.First();

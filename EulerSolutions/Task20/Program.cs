@@ -8,7 +8,7 @@ internal class Program
         var x = 10;
         var factorial = GetFactorialOf(x);
 
-        var result = Helpers.GetListOfNumbers(factorial);
+        var result = Helpers.GetListOfDigits(factorial);
 
         Console.WriteLine(result.Sum());
     }
