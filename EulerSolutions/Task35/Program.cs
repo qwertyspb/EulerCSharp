@@ -33,7 +33,7 @@ internal class Program
         var digits = Helpers.GetListOfDigits(num);
 
         if (digits.Contains(0))
-            throw new Exception($"This method cannot be applied to zero containig numbers. Number you try to rotate is {num}");
+            throw new Exception($"This method cannot be applied to zero containing numbers. Number you try to rotate is {num}");
 
         for (var i = 0; i < digits.Count - 1; i++)
         {
@@ -46,18 +46,8 @@ internal class Program
 
     private static int Rotate(int num)
     {
-        var divider = 0.1;
-        bool hasManyDigits = true;
+        var firstDigit = Helpers.GetFirstDigit(num, out var rest);
 
-        while (hasManyDigits)
-        {
-            divider *= 10;
-            hasManyDigits = num / divider > 10;
-        }
-
-        var rest = num % divider;
-        var main = num / (int)divider;
-
-        return int.Parse(rest.ToString() + main.ToString());
+        return int.Parse(rest.ToString() + firstDigit.ToString());
     }
 }

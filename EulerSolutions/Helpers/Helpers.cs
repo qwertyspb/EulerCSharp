@@ -1,5 +1,4 @@
 ﻿using Enums;
-using HelpingLibrary.Interpretator;
 
 namespace HelpingLibrary
 {
@@ -93,6 +92,52 @@ namespace HelpingLibrary
                 result *= i;
 
             return result;
+        }
+
+        public static int GetFirstDigit(int num, out int rest)
+        {
+            var divider = 0.1;
+            bool hasManyDigits = true;
+
+            while (hasManyDigits)
+            {
+                divider *= 10;
+                hasManyDigits = num / divider > 10;
+            }
+
+            rest = num % (int)divider;
+
+            return num / (int)divider;
+        }
+
+        public static int GetLastDigit(int num)
+            => num < 10 ? num : num % 10;
+
+        public static int GetLastDigit(int num, out int rest)
+        {
+            rest = num / 10;
+            return GetLastDigit(num);
+        }
+
+        public static int Reverse(int num)
+        {
+            if (num == 0)
+                return num;
+
+            var list = new List<int>();
+
+            while (num > 0)
+            {
+                var lastDigit = GetLastDigit(num, out var rest);
+
+                list.Add(lastDigit);
+
+                num = rest;
+            }
+
+            var reversedStr = string.Join(string.Empty, list.Select(i => i.ToString()));
+
+            return int.Parse(reversedStr);
         }
     }
 }
