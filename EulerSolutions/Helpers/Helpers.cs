@@ -139,5 +139,32 @@ namespace HelpingLibrary
 
             return int.Parse(reversedStr);
         }
+
+        public static int TruncateRight(int num)
+            => num / 10;
+
+        public static int TruncateLeft(int num)
+        {
+            var divider = 0.1;
+            bool hasManyDigits = true;
+
+            while (hasManyDigits)
+            {
+                divider *= 10;
+                hasManyDigits = num / divider > 10;
+            }
+
+            return num % (int)divider;
+        }
+
+        public static int TruncateFrom(Side side, int i)
+        {
+            return side switch
+            {
+                Side.Left => TruncateLeft(i),
+                Side.Right => TruncateRight(i),
+                _ => throw new NotImplementedException()
+            };
+        }
     }
 }
