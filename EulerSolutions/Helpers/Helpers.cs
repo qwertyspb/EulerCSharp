@@ -166,5 +166,29 @@ namespace HelpingLibrary
                 _ => throw new NotImplementedException()
             };
         }
+
+        public static bool IsPandigitalFrom1To9(int num)
+        {
+            var limit = 9;
+
+            var list = PrepareData(num);
+
+            return list.Contains(0) || list.Count > limit
+                ? false
+                : list.Distinct().ToList().Count() == limit;
+        }
+
+        private static List<int> PrepareData(int num)
+        {
+            var result = new List<int>();
+
+            var arr = num.ToString()
+                .ToCharArray();
+
+            foreach (var i in arr)
+                result.Add(int.Parse(i.ToString()));
+            
+            return result;
+        }
     }
 }

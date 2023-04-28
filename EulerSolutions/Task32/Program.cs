@@ -24,7 +24,7 @@
             {
                 var product = i * j;
 
-                if (isPandigitalFrom1To9(i, j, product))
+                if (IsPandigitalFrom1To9(i, j, product))
                     result.Add(product);
             }
         }
@@ -55,7 +55,7 @@
         return sum;
     }
 
-    private static bool isPandigitalFrom1To9(int i, int j, int product)
+    private static bool IsPandigitalFrom1To9(int i, int j, int product)
     {
         var limit = 9;
 
