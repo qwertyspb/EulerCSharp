@@ -1,4 +1,6 @@
-﻿internal class Program
+﻿using HelpingLibrary;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
@@ -24,7 +26,7 @@
             {
                 var product = i * j;
 
-                if (IsPandigitalFrom1To9(i, j, product))
+                if (IsPandigital(i, j, product))
                     result.Add(product);
             }
         }
@@ -55,31 +57,19 @@
         return sum;
     }
 
-    private static bool IsPandigitalFrom1To9(int i, int j, int product)
+    private static bool IsPandigital(int i, int j, int product)
     {
-        var limit = 9;
+        var num = PrepareData(i, j, product);
 
-        var list = PrepareData(i, j, product);
-
-        return list.Contains(0) || list.Count > limit
-            ? false
-            : list.Distinct().ToList().Count() == limit;
+        return Helpers.IsPandigitalFrom1To9(num);
     }
 
-    private static List<int> PrepareData(int a, int b, int c)
+    private static long PrepareData(int a, int b, int c)
     {
         var list = new List<int> { a, b, c };
-        var result = new List<int>();
 
-        foreach (var item in list)
-        {
-            var arr = item.ToString()
-                .ToCharArray();
+        var result = string.Join(string.Empty, list.Select(x => x.ToString()));
 
-            foreach (var x in arr)
-                result.Add(int.Parse(x.ToString()));
-        }
-
-        return result;
+        return long.Parse(result);
     }
 }

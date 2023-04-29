@@ -167,7 +167,7 @@ namespace HelpingLibrary
             };
         }
 
-        public static bool IsPandigitalFrom1To9(int num)
+        public static bool IsPandigitalFrom1To9(long num)
         {
             var limit = 9;
 
@@ -178,7 +178,7 @@ namespace HelpingLibrary
                 : list.Distinct().ToList().Count() == limit;
         }
 
-        private static List<int> PrepareData(int num)
+        private static List<int> PrepareData(long num)
         {
             var result = new List<int>();
 
