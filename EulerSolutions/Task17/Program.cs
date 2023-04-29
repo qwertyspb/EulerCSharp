@@ -1,4 +1,4 @@
-﻿using HelpingLibrary.Interpretator;
+﻿using HelpersLibrary.Interpretator;
 using System.Text;
 
 internal class Program

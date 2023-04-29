@@ -1,5 +1,5 @@
 ﻿using Enums;
-using HelpingLibrary;
+using HelpersLibrary;
 
 internal class Program
 {
