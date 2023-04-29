@@ -1,4 +1,5 @@
 ﻿using Enums;
+using System;
 
 namespace HelpersLibrary
 {
@@ -171,14 +172,14 @@ namespace HelpersLibrary
         {
             var limit = 9;
 
-            var list = PrepareData(num);
+            var list = PrepareData(num).ToList();
 
             return list.Contains(0) || list.Count > limit
                 ? false
                 : list.Distinct().ToList().Count() == limit;
         }
 
-        private static List<int> PrepareData(long num)
+        private static IEnumerable<int> PrepareData(long num)
         {
             var result = new List<int>();
 
@@ -189,6 +190,31 @@ namespace HelpersLibrary
                 result.Add(int.Parse(i.ToString()));
 
             return result;
+        }
+
+        public static bool IsPandigital(int num)
+        {
+            var limit = num.ToString().Length;
+
+            var list = PrepareData(num);
+
+            list = list.Distinct();
+
+            if (list.Contains(0) || list.Count() < limit)
+                return false;
+
+            list = list.OrderBy(x => x);
+
+            var previous = 0;
+            foreach (var i in list)
+            {
+                if (i - previous != 1)
+                    return false;
+
+                previous = i;
+            }
+
+            return true;
         }
     }
 }
