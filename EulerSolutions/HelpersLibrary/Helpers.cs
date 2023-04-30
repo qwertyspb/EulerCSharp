@@ -216,5 +216,14 @@ namespace HelpersLibrary
 
             return true;
         }
+
+        public static IEnumerable<int> GetListOfLetterIndexes(string word)
+        {
+            var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+
+            var arr = word.ToCharArray();
+
+            return arr.Select(letter => Array.IndexOf(alphabet, letter) + 1);
+        }
     }
 }
