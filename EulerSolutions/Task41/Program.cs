@@ -11,7 +11,7 @@ internal class Program
             if (i % 1000000 == 0)
                 Console.WriteLine(i);
 
-            if (Helpers.IsPandigital(i) && Helpers.IsPrime(i))
+            if (Helpers.IsPandigital(i) && Helpers.IsInOrder(i, 1) && Helpers.IsPrime(i))
             {
                 max = i;
                 break;

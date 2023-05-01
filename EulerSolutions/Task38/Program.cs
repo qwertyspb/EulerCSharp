@@ -33,7 +33,7 @@ internal class Program
 
         var parsed = int.Parse(result);
 
-        var isPandigital = Helpers.IsPandigitalFrom1To9(parsed);
+        var isPandigital = Helpers.IsPandigital(parsed, 9);
 
         if (isPandigital)
             nineDigitNumber = parsed;

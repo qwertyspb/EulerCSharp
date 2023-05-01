@@ -1,5 +1,6 @@
 ﻿using Enums;
 using System;
+using System.Reflection.Metadata;
 
 namespace HelpersLibrary
 {
@@ -66,7 +67,7 @@ namespace HelpersLibrary
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        public static List<int> GetListOfDigits(int i)
+        public static List<int> GetListOfDigits(long i)
         {
             var arr = i.ToString().ToCharArray();
 
@@ -172,11 +173,11 @@ namespace HelpersLibrary
         {
             var limit = 9;
 
-            var list = PrepareData(num).ToList();
+            var list = GetListOfDigits(num).ToList();
 
-            return list.Contains(0) || list.Count > limit
-                ? false
-                : list.Distinct().ToList().Count() == limit;
+            return !list.Contains(0)
+                && list.Count <= limit
+                && list.Distinct().Count() == limit;
         }
 
         private static IEnumerable<int> PrepareData(long num)
@@ -192,20 +193,26 @@ namespace HelpersLibrary
             return result;
         }
 
-        public static bool IsPandigital(int num)
+        public static bool IsPandigital(long num, int? limit = null, bool includeZero = false)
         {
-            var limit = num.ToString().Length;
+            limit ??= num.ToString().Length;
 
-            var list = PrepareData(num);
+            var list = GetListOfDigits(num) as IEnumerable<int>;
 
             list = list.Distinct();
 
-            if (list.Contains(0) || list.Count() < limit)
-                return false;
+            return includeZero 
+                ? list.Count() == limit
+                : list.Count() == limit && !list.Contains(0);
+        }
+
+        public static bool IsInOrder(long num, int startDigit)
+        {
+            var list = GetListOfDigits(num) as IEnumerable<int>;
 
             list = list.OrderBy(x => x);
 
-            var previous = 0;
+            var previous = startDigit - 1;
             foreach (var i in list)
             {
                 if (i - previous != 1)
