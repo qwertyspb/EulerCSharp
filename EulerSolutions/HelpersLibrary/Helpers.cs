@@ -233,7 +233,13 @@ namespace HelpersLibrary
             return arr.Select(letter => Array.IndexOf(alphabet, letter) + 1);
         }
 
-        public static int GetPentagonal(int position)
+        public static double GetPentagonalNumber(double position)
             => position * (3 * position - 1) / 2;
+
+        public static double GetTriangleNumber(double position)
+            => position * (position + 1) / 2;
+
+        public static double GetHexagonalNumber(double position)
+            => position * (2 * position - 1);
     }
 }
