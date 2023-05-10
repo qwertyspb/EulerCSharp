@@ -16,50 +16,45 @@ internal class Program
         {
             t = Helpers.GetTriangleNumber(i);
 
-            var pRow = GetPentagonalRow(t, i);
-            if (!pRow.Contains(t))
+            var pRow = GetRow(t, i, RowType.Pentagonal);
+            if (pRow.Contains(t))
             {
-                i++;
-                continue;
+                var hRow = GetRow(t, i, RowType.Hexagonal);
+                if (hRow.Contains(t))
+                {
+                    Console.WriteLine(t);
+                    break;
+                }
             }
 
-            var hRow = GetHexagonalRow(t, i);
-            if (!hRow.Contains(t))
-            {
-                i++;
-                continue;
-            }
-
-            Console.WriteLine(t);
-            break;
+            i++;
         }
     }
 
-    private static List<double> GetPentagonalRow(double max, double position)
+    private static List<double> GetRow(double max, double position, RowType rowType)
     {
         var num = max;
         var row = new List<double>();
 
         for (double i = position; num >= max; i--)
         {
-            num = Helpers.GetPentagonalNumber(i);
+            num = rowType switch
+            {
+                RowType.Pentagonal => Helpers.GetPentagonalNumber(i),
+                RowType.Hexagonal => Helpers.GetHexagonalNumber(i),
+                _ => throw new NotImplementedException()
+            };
+
             row.Add(num);
         }
 
         return row;
     }
-    private static List<double> GetHexagonalRow(double max, double position)
+
+    private enum RowType
     {
-        var num = max;
-        var row = new List<double>();
-
-        for (double i = position; num >= max; i--)
-        {
-            num = Helpers.GetHexagonalNumber(i);
-            row.Add(num);
-        }
-
-        return row;
+        Pentagonal,
+        Hexagonal
     }
 
 }

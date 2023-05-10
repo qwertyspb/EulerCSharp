@@ -12,14 +12,14 @@ internal class Program
 
         for (int i = 1; i <= limit; i++)
         {
-            pentagonals.Add(Helpers.GetPentagonalNumber(i));
+            pentagonals.Add((int)Helpers.GetPentagonalNumber(i));
             position = i;
         }
 
         limit = pentagonals.Last() * 2;
 
         for (int j = position + 1; j <= limit; j++)
-            pentagonals.Add(Helpers.GetPentagonalNumber(j));
+            pentagonals.Add((int)Helpers.GetPentagonalNumber(j));
 
         for (int i = 0; i < pentagonals.Count; i++)
         {
