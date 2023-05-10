@@ -232,5 +232,8 @@ namespace HelpersLibrary
 
             return arr.Select(letter => Array.IndexOf(alphabet, letter) + 1);
         }
+
+        public static int GetPentagonal(int position)
+            => position * (3 * position - 1) / 2;
     }
 }
